@@ -1,19 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const NavBar = () => {
+const NavBar = (props) => {
   return (
-    <ul>
-      <li>
-        <Link to='/home'>Home</Link>
-      </li>
-      <li>
-        <Link to='/products'>Products</Link>
-      </li>
-      <li>
-        <Link to='/cart'>Shopping Cart</Link>
-      </li>
-    </ul>
+    <nav>
+      <ul>
+        <li>
+          <Link to='/home'>Home Page</Link>
+        </li>
+        <li>
+          <Link to='/product'>Product</Link>
+        </li>
+        <li>
+          <Link to='/cart'>Shopping Cart {props.totalProducts}</Link>
+        </li>
+      </ul>
+    </nav>
   );
 };
 
