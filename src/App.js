@@ -15,27 +15,26 @@ function App() {
 
   return (
     <Router>
+      <NavBar totalProducts={cartState.length} />
+
       <Switch>
-        <div className='App'>
-          <NavBar totalProducts={cartState.length} />
-          <Route
-            exact
-            path='/home'
-            render={() => <HomePage addToCartProp={addToCart} />}
-          />
+        <Route
+          exact
+          path='/home'
+          render={() => <HomePage addToCartProp={addToCart} />}
+        />
 
-          <Route
-            exact
-            path='/product'
-            render={() => <Product addToCartProp={addToCart} />}
-          />
+        <Route
+          exact
+          path='/product'
+          render={() => <Product addToCartProp={addToCart} />}
+        />
 
-          <Route
-            exact
-            path='/cart'
-            render={() => <Cart addToCartProp={addToCart} />}
-          />
-        </div>
+        <Route
+          exact
+          path='/cart'
+          render={() => <Cart addToCartProp={addToCart} />}
+        />
       </Switch>
     </Router>
   );
