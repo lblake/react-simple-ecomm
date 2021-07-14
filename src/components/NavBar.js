@@ -8,9 +8,9 @@ const NavBar = (props) => {
         <li>
           <Link to='/home'>Home Page</Link>
         </li>
-        <li>
+        {/* <li>
           <Link to='/product'>Product</Link>
-        </li>
+        </li> */}
         <li>
           <Link to='/cart'>Shopping Cart {props.totalProducts}</Link>
         </li>

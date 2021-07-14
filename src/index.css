@@ -14,14 +14,13 @@ code {
 
 ul {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
-
 
 .home {
   text-align: center;
 }
 
-.cart{
+.cart {
   text-align: center;
 }

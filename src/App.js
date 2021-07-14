@@ -30,10 +30,16 @@ function App() {
           render={() => <Product addToCartProp={addToCart} />}
         />
 
-        <Route
+        {/* <Route
           exact
           path='/cart'
           render={() => <Cart addToCartProp={addToCart} />}
+        /> */}
+
+        <Route
+          exact
+          path='/cart'
+          render={() => <Cart cartProductsProp={cartState} />}
         />
       </Switch>
     </Router>
