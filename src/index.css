@@ -16,3 +16,12 @@ ul {
   display: flex;
   justify-content: space-between;
 }
+
+
+.home {
+  text-align: center;
+}
+
+.cart{
+  text-align: center;
+}

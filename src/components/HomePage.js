@@ -3,7 +3,7 @@ import Product from './Product';
 
 const HomePage = (props) => {
   return (
-    <div>
+    <div className="home">
       <h1>This Is The Home Page</h1>
       <Product
         name='Samsung TV'
