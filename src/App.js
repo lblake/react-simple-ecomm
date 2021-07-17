@@ -2,7 +2,7 @@ import './App.css';
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NavBar from './components/NavBar';
-import Product from './components/Product';
+// import Product from './components/Product';
 import Cart from './components/Cart';
 import HomePage from './components/HomePage';
 
@@ -23,12 +23,12 @@ function App() {
           path='/home'
           render={() => <HomePage addToCartProp={addToCart} />}
         />
-
+        {/* 
         <Route
           exact
           path='/product'
           render={() => <Product addToCartProp={addToCart} />}
-        />
+        /> */}
 
         {/* <Route
           exact
