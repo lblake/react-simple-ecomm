@@ -13,6 +13,15 @@ function App() {
     setCartState([...cartState, product]);
   };
 
+  const handleRemoveItem = (indexMap) => {
+    const newCart = cartState.filter(
+      (product, indexFilter) => indexFilter !== indexMap
+    );
+    setCartState([...newCart]);
+    console.log(newCart);
+    console.log(indexMap);
+  };
+
   return (
     <Router>
       <NavBar totalProducts={cartState.length} />
@@ -39,7 +48,12 @@ function App() {
         <Route
           exact
           path='/cart'
-          render={() => <Cart cartProductsProp={cartState} />}
+          render={() => (
+            <Cart
+              cartProductsProp={cartState}
+              handleRemoveItemProp={handleRemoveItem}
+            />
+          )}
         />
       </Switch>
     </Router>

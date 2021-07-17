@@ -1,11 +1,5 @@
 import React from 'react';
 
-const handleRemoveItem = (props) => {
-  const newCart = props.cartProductsProp.filter(
-    (product) => product.key !== key
-  );
-  console.log(newCart);
-};
 
 const Cart = (props) => {
   console.log(props);
@@ -17,7 +11,7 @@ const Cart = (props) => {
         <button
           type='button'
           className='delete-button'
-          onClick={handleRemoveItem}
+          onClick={()=> props.handleRemoveItemProp(index)}
         >
           Delete Item
         </button>
@@ -25,14 +19,16 @@ const Cart = (props) => {
     );
   });
 
+  const total = props.cartProductsProp.reduce(function (sum, product) {
+    return sum + parseInt(product.price) 
+  }, 0)
+
   return (
     <div className='cart'>
       <h1>This Is The Shopping Cart Page</h1>
       <li>{products}</li>
-      Total: $
-      {products.reduce(function (total, products) {
-        return total + products.price * products.index;
-      }, 0)}
+      Total: $ {total}
+      
     </div>
   );
 };
