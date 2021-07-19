@@ -32,3 +32,12 @@ li {
 a:link {
   text-decoration: none;
 }
+
+.cart-buttons {
+  margin-left: 10px;
+  border: black solid 2px;
+}
+
+.add-to-cart-button {
+  border: black solid 2px;
+}

@@ -11,8 +11,11 @@ const NavBar = (props) => {
         {/* <li>
           <Link to='/product'>Product</Link>
         </li> */}
-        <li>
-          <Link to='/cart'>Shopping Cart {props.totalProducts}</Link>
+        <li className='shopping-cart'>
+          <Link to='/cart'>
+            Shopping Cart 🛒{' '}
+            {props.totalProducts === 0 ? ' Empty ' : props.totalProducts}
+          </Link>
         </li>
       </ul>
     </nav>
