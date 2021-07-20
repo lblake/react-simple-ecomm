@@ -3,7 +3,11 @@ import React from 'react';
 const Cart = (props) => {
   console.log(props);
 
-  const products = props.cartProductsProp.map((product, index) => {
+  const productsWithQuantities = props.cartProductsProp.filter((product, index) => {
+    return product.quantity > 0
+  })
+
+  const productsToDisplay = productsWithQuantities.map((product, index) => {
     return (
       <div key={index}>
         {product.name} ${product.price}
@@ -14,6 +18,7 @@ const Cart = (props) => {
         >
           - Remove Item(s)
         </button>
+        <span className="product-quantity">{product.quantity}</span>
         <button
           type='button'
           className='cart-buttons'
@@ -44,7 +49,7 @@ const Cart = (props) => {
   return (
     <div className='cart'>
       <h1>This Is The Shopping Cart Page</h1>
-      <li>{products}</li>
+      <li>{productsToDisplay}</li>
       Total: $ {total}
       {/* Cart: {cart} */}
     </div>
