@@ -3,36 +3,38 @@ import React from 'react';
 const Cart = (props) => {
   console.log(props);
 
-  const productsWithQuantities = props.cartProductsProp.filter((product, index) => {
-    return product.quantity > 0
-  })
+  const productsWithQuantities = props.cartProductsProp.filter(
+    (product, index) => {
+      return product.quantity > 0;
+    }
+  );
 
   const productsToDisplay = productsWithQuantities.map((product, index) => {
     return (
       <div key={index}>
         {product.name} ${product.price}
+        <span className='product-quantity'>{product.quantity}</span>
         <button
           type='button'
           className='cart-buttons'
           onClick={() => props.handleRemoveItemProp(index)}
         >
-          - Remove Item(s)
+          Remove Item(s)
         </button>
-        <span className="product-quantity">{product.quantity}</span>
         <button
           type='button'
           className='cart-buttons'
-          onClick={() => props.handleAddItemProp(product)}
+          onClick={() => props.handleAddItemProp(index)}
         >
-          + Add Item(s)
+          Add Item(s)
         </button>
-        <button
+        {/* <button
           type='button'
           className='cart-buttons'
           onClick={() => props.handleDeleteItemProp(index)}
         >
           Delete Item
-        </button>
+        </button> */}
       </div>
     );
   });
@@ -40,7 +42,6 @@ const Cart = (props) => {
   const total = props.cartProductsProp.reduce(function (sum, product) {
     return sum + parseInt(product.price);
   }, 0);
-
   // const cart = props.handleItemCountProp.reduce(function (sum, product) {
   //   return sum + (product.name);
   // }, []);
