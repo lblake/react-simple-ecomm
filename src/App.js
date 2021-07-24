@@ -6,6 +6,7 @@ import Cart from './components/Cart';
 import HomePage from './components/HomePage';
 
 function App() {
+  //Todo add localStorage
   const useStateWithLocalStorage = (localStorageKey) => {
     const [value, setValue] = React.useState(
       localStorage.getItem(localStorageKey) || ''
@@ -40,23 +41,6 @@ function App() {
 
   const onChange = (event) => setValue(event.target.value);
 
-  // Not sure if this is going to work
-  const itemCount = (indexMap) => {
-    console.log(cartState);
-
-    const existingItem = cartState.find(
-      (indexMap) => indexMap.id === setCartState.id
-    );
-
-    if (!existingItem) {
-      setCartState([...cartState]);
-      existingItem.count = 1;
-    } else {
-      existingItem.count++;
-    }
-    return cartState;
-  };
-
   const addToCart = (productIndex) => {
     // setCartState([...cartState, product]);
     console.log('Product index position is ' + productIndex);
@@ -79,15 +63,6 @@ function App() {
     //now lets update the cartState with this new array updated
     setCartState([...newCartState]);
   };
-
-  // const handleDeleteItem = (indexMap) => {
-  //   const newCart = cartState.filter(
-  //     (product, indexFilter) => indexFilter !== indexMap
-  //   );
-  //   setCartState([...newCart]);
-  //   console.log(newCart);
-  //   console.log(indexMap);
-  // };
 
   const handleRemoveItem = (productIndex) => {
     const newCartState = [...cartState];
@@ -131,18 +106,6 @@ function App() {
             <HomePage addToCartProp={addToCart} productsProp={cartState} />
           )}
         />
-        {/* 
-        <Route
-          exact
-          path='/product'
-          render={() => <Product addToCartProp={addToCart} />}
-        /> */}
-
-        {/* <Route
-          exact
-          path='/cart'
-          render={() => <Cart addToCartProp={addToCart} />}
-        /> */}
 
         <Route
           exact
@@ -153,7 +116,6 @@ function App() {
               // handleDeleteItemProp={handleDeleteItem}
               handleAddItemProp={handleAddItem}
               handleRemoveItemProp={handleRemoveItem}
-              ItemCountProp={itemCount}
             />
           )}
         />

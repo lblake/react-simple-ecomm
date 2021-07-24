@@ -39,20 +39,15 @@ const Cart = (props) => {
     );
   });
 
-  const total = props.cartProductsProp.reduce(function (sum, product) {
-    return sum + parseInt(product.price);
+  const total = productsWithQuantities.reduce(function (sum, product) {
+    return sum + parseInt(product.price) * product.quantity;
   }, 0);
-  // const cart = props.handleItemCountProp.reduce(function (sum, product) {
-  //   return sum + (product.name);
-  // }, []);
-  // const cart = props.handleItemCountProp.reduce(function (summarizer, [])
 
   return (
     <div className='cart'>
       <h1>This Is The Shopping Cart Page</h1>
       <li>{productsToDisplay}</li>
       Total: $ {total}
-      {/* Cart: {cart} */}
     </div>
   );
 };
