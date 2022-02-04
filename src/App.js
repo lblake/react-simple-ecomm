@@ -1,23 +1,12 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Cart from './components/Cart';
 import HomePage from './components/HomePage';
 
 function App() {
-  //Todo add localStorage
-  const useStateWithLocalStorage = (localStorageKey) => {
-    const [value, setValue] = React.useState(
-      localStorage.getItem(localStorageKey) || ''
-    );
-
-    React.useEffect(() => {
-      localStorage.setItem(localStorageKey, value);
-    }, [value]);
-
-    return [value, setValue];
-  };
+  const LOCAL_STORAGE_KEY = 'shoppingWithReact.cart';
 
   const [cartState, setCartState] = useState([
     {
@@ -36,10 +25,15 @@ function App() {
       quantity: 0,
     },
   ]);
+  //Local Storage
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(cartState));
+  }, [cartState]);
 
-  const [value, setValue] = useStateWithLocalStorage('myValueInLocalStorage');
-
-  const onChange = (event) => setValue(event.target.value);
+  useEffect(() => {
+    const cartJSON = localStorage.getItem(LOCAL_STORAGE_KEY);
+    if (cartJSON != null) setCartState(JSON.parse(cartJSON));
+  }, []);
 
   const addToCart = (productIndex) => {
     // setCartState([...cartState, product]);
